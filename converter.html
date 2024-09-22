@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Area Converter</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+        h1 {
+            text-align: center;
+        }
+        .converter {
+            max-width: 400px;
+            margin: auto;
+            border: 1px solid #ccc;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        input, button {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+    <h1>Area Converter: Square Feet to Ankanam</h1>
+    <div class="converter">
+        <h2>Convert Square Feet to Ankanam</h2>
+        <input type="number" id="sqFeet" placeholder="Enter Square Feet">
+        <button onclick="convertToAnkanam()">Convert to Ankanam</button>
+        <p id="resultSQToAnk"></p>
+
+        <h2>Convert Ankanam to Square Feet</h2>
+        <input type="number" id="ankanam" placeholder="Enter Ankanam">
+        <button onclick="convertToSqFeet()">Convert to Square Feet</button>
+        <p id="resultAnkToSQ"></p>
+    </div>
+
+    <script>
+        const ankanamToSqFeet = 72;
+
+        function convertToAnkanam() {
+            const sqFeet = parseFloat(document.getElementById("sqFeet").value);
+            if (!isNaN(sqFeet)) {
+                const ankanam = (sqFeet / ankanamToSqFeet).toFixed(2);
+                document.getElementById("resultSQToAnk").innerText = `${sqFeet} Square Feet = ${ankanam} Ankanam`;
+            } else {
+                document.getElementById("resultSQToAnk").innerText = "Please enter a valid number.";
+            }
+        }
+
+        function convertToSqFeet() {
+            const ankanam = parseFloat(document.getElementById("ankanam").value);
+            if (!isNaN(ankanam)) {
+                const sqFeet = (ankanam * ankanamToSqFeet).toFixed(2);
+                document.getElementById("resultAnkToSQ").innerText = `${ankanam} Ankanam = ${sqFeet} Square Feet`;
+            } else {
+                document.getElementById("resultAnkToSQ").innerText = "Please enter a valid number.";
+            }
+        }
+    </script>
+</body>
+</html>
